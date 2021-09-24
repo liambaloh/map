@@ -1151,6 +1151,26 @@ Array
 	}
 
 
+	public function testIfBoolFalse()
+	{
+		Map::from( ['a' => 1, 'b' => 0] )->if(
+			1 == 2,
+			function(Map $_) { $this->assertTrue( false ); }
+		);
+		$this->assertTrue(true);
+	}
+
+
+	public function testIfBoolTrue()
+	{
+		Map::from( ['a' => 1, 'b' => 0] )->if(
+			1 == 1,
+			function(Map $_) { $this->assertTrue( true ); }
+		);
+		$this->assertTrue(false);
+	}
+
+
 	public function testIfElse()
 	{
 		Map::from( ['a' => 1, 'b' => 0] )->if(
